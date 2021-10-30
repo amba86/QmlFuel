@@ -2,5 +2,6 @@
     <qresource prefix="/">
         <file>main.qml</file>
         <file>Fuel.qml</file>
+        <file>Hand.qml</file>
     </qresource>
 </RCC>
