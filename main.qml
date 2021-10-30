@@ -12,15 +12,26 @@ Window {
     Timer {
         id: id_timer
         repeat: true
-        interval: 100
+        interval: 200
         running: true
 
         property int count: -255
+        property bool ascending: true
 
         onTriggered: {
-            if (count++ == 256) {
-                count = -255
+            if (ascending) {
+                if (count++ == 256) {
+                    count = 255
+                    ascending = false
+                }
+            } else {
+                if (count-- == -256) {
+                    count = -255
+                    ascending = true
+                }
             }
+
+//            count = Math.floor(Math.random() * (256 + 255) ) - 255
 
             id_fuel.set_fuel_level(count)
         }
