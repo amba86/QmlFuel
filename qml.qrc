@@ -3,5 +3,6 @@
         <file>main.qml</file>
         <file>Fuel.qml</file>
         <file>Hand.qml</file>
+        <file>fuel.png</file>
     </qresource>
 </RCC>
