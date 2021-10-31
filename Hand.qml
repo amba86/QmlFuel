@@ -21,14 +21,4 @@ Item {
     Behavior on rotation {
         SmoothedAnimation { velocity: 50 }
     }
-
-    Rectangle {
-        width: id_root.width / 2
-        height: width
-        radius: width / 2
-        color: "yellow"
-        anchors.bottom: parent.bottom
-        //        anchors.bottomMargin: height / 2
-        anchors.horizontalCenter: parent.horizontalCenter
-    }
 }
