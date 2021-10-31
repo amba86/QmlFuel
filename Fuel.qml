@@ -1,16 +1,27 @@
 import QtQuick 2.0
+import QtGraphicalEffects 1.0
 
 Item {
     id: id_root
 
     property int fuel_level
+    property string fuel_color: "#EF476F"
 
     function set_fuel_level(new_level) {
+        console.log(new_level)
         var value = Math.max(0, new_level)
         var range = Math.abs(fuel_level - value) / 256.0
 
-        if (range > 0.05) {
+        if (range > 0.05 || value ===0 || value === 256) {
             fuel_level = value
+
+            if (value <= 256 * 0.33) {
+                fuel_color = "#EF476F"
+            } else if (value > 256 * 0.33 && value <= 256 * 0.66) {
+                fuel_color = "#FFD166"
+            } else {
+                fuel_color = "#06D6A0"
+            }
         }
     }
 
@@ -18,6 +29,7 @@ Item {
         id: id_fuel
         anchors.fill: parent
         anchors.centerIn: parent
+        color: "#073B4C"
 
         property int dial_count: 4
         property int bottom_margin: height / 4
@@ -39,8 +51,8 @@ Item {
 
             onPaint: {
                 var context = id_canvas.getContext("2d");
-                context.fillStyle = "blue";
-                context.strokeStyle = "red";
+                context.fillStyle = "#073B4C";
+                context.strokeStyle = "#EF476F";
                 context.lineWidth = line_width;
 
                 context.beginPath();
@@ -51,12 +63,12 @@ Item {
                 context.arc(id_fuel.width / 2, 0, radius, 0, Math.PI * 0.33);
                 context.stroke();
 
-                context.strokeStyle = "orange";
+                context.strokeStyle = "#FFD166";
                 context.beginPath();
                 context.arc(id_fuel.width / 2, 0, radius, Math.PI * 0.33, Math.PI * 0.66);
                 context.stroke();
 
-                context.strokeStyle = "green";
+                context.strokeStyle = "#06D6A0";
                 context.beginPath();
                 context.arc(id_fuel.width / 2, 0, radius, Math.PI * 0.66, Math.PI);
                 context.stroke();
@@ -87,6 +99,27 @@ Item {
         //        }
 
         /*
+         * Draw fuel icon
+         */
+        Image {
+            id: id_fuel_icon
+            height: Math.min(parent.height / 4, parent.width / 4)
+            fillMode: Image.PreserveAspectFit
+            source: "fuel.png"
+            smooth: true
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: id_fuel.bottom_margin + id_hand_circle.height
+            anchors.horizontalCenter: parent.horizontalCenter
+            visible: true
+        }
+
+        ColorOverlay {
+            anchors.fill: id_fuel_icon
+            source: id_fuel_icon
+            color: id_root.fuel_color
+        }
+
+        /*
          * Draw hand
          */
         Hand {
@@ -108,7 +141,9 @@ Item {
             width: id_fuel.width * 0.1
             height: width
             radius: width / 2
-            color: "yellow"
+            color: "#073B4C"
+            border.color: "#118AB2"
+            border.width: id_fuel.width * 0.02
             anchors.bottom: parent.bottom
             anchors.bottomMargin: id_fuel.bottom_margin - height / 2
             anchors.horizontalCenter: parent.horizontalCenter
@@ -120,8 +155,10 @@ Item {
         Text {
             id: id_fuel_level_text
             text: ((id_root.fuel_level / 256 * 100) | 0) + " %"
-            color: "black"
+            color: "#118AB2"
             font.pixelSize: 40
+            font.bold: true
+            font.family: "SF Mono"
             anchors.bottom: parent.bottom
             anchors.bottomMargin: id_fuel.bottom_margin - id_hand_circle.height - height / 2
             anchors.horizontalCenter: parent.horizontalCenter

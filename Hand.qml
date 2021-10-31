@@ -11,7 +11,7 @@ Item {
         y: id_root.height * 0.05
         width: id_root.height * 0.02
         height: id_root.height * 0.45
-        color: "purple"
+        color: "#118AB2"
         antialiasing: true
         anchors.horizontalCenter: id_root.horizontalCenter
     }
