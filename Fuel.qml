@@ -158,7 +158,7 @@ Item {
             color: "#118AB2"
             font.pixelSize: 40
             font.bold: true
-            font.family: "SF Mono"
+            font.family: "Lato"
             anchors.bottom: parent.bottom
             anchors.bottomMargin: id_fuel.bottom_margin - id_hand_circle.height - height / 2
             anchors.horizontalCenter: parent.horizontalCenter
