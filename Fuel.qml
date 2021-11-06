@@ -76,29 +76,6 @@ Item {
         }
 
         /*
-         * Draw dials
-         */
-        //        Repeater {
-        //            model: id_fuel.dial_count
-
-        //            Item {
-        //                x: id_fuel.width / 2
-        //                height: id_fuel.height / 2
-        //                transformOrigin: Item.Bottom
-        //                rotation: index * 60 + 270
-
-        //                Rectangle {
-        //                    height: id_fuel.height * 0.1
-        //                    width: id_fuel.width * 0.02
-        //                    color: "black"
-        //                    antialiasing: true
-        //                    anchors.bottom: parent.bottom
-        //                    anchors.horizontalCenter: parent.horizontalCenter
-        //                }
-        //            }
-        //        }
-
-        /*
          * Draw fuel icon
          */
         Image {
