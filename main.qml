@@ -33,8 +33,6 @@ Window {
                 }
             }
 
-//            count = Math.floor(Math.random() * (256 + 255) ) - 255
-
             id_fuel.set_fuel_level(count)
         }
     }
