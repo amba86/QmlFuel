@@ -84,6 +84,7 @@ Item {
             fillMode: Image.PreserveAspectFit
             source: "fuel.png"
             smooth: true
+            antialiasing: true
             anchors.bottom: parent.bottom
             anchors.bottomMargin: id_fuel.bottom_margin + id_hand_circle.height
             anchors.horizontalCenter: parent.horizontalCenter

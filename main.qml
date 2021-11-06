@@ -4,10 +4,12 @@ import QtQuick.Window 2.12
 Window {
     id: id_root
     visible: true
-    width: 640
-    height: 480
+    maximumWidth: 800
+    maximumHeight: 600
+    minimumWidth: maximumWidth
+    minimumHeight: maximumHeight
 
-    title: qsTr("Fuel HMI")
+    title: qsTr("QmlFuel")
 
     Timer {
         id: id_timer
